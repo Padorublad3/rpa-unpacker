@@ -3,7 +3,6 @@ import zlib
 from typing import BinaryIO
 import io
 from pathlib import Path
-from concurrent.futures import ThreadPoolExecutor
 class SafeUnpickler(pickle.Unpickler):
     def find_class(self, module_name, global_name):
         raise pickle.UnpicklingError("Import is prohibited")
