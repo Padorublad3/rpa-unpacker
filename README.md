@@ -8,7 +8,7 @@ A portable cli unarchiver for the `.rpa` format used by the Ren'Py visual novel 
 ## Usage
 Via CLI
 ```bash
-.\cli.exe "C:\game\archive.rpa" -o "C:\result" 
+.\unpacker.exe "C:\game\archive.rpa" -o "C:\result" 
 ```
 
 ## Arguments

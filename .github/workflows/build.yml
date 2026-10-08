@@ -19,7 +19,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: '3.14'
 
       - name: Install dependencies
         run: |
@@ -33,13 +33,13 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: rpa-unpacker-windows
-          path: rpa-unpacker.exe
+          name: unpacker-windows
+          path: unpacker.exe
 
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
-          files: rpa-unpacker.exe
+          files: unpacker.exe
           tag_name: ${{ github.ref_name }}
           generate_release_notes: true
         env:
