@@ -1,10 +1,12 @@
 name: Build Windows EXE
 
-
 on:
   push:
     tags:
       - 'v*'
+
+permissions:
+  contents: write
 
 jobs:
   build:
@@ -17,7 +19,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.14' 
+          python-version: '3.11'
 
       - name: Install dependencies
         run: |
@@ -26,7 +28,7 @@ jobs:
 
       - name: Build with Nuitka
         run: |
-          python -m nuitka --onefile --output-filename=rpa-unpacker.exe --assume-yes-for-downloads cli.py
+          python -m nuitka --onefile --output-filename=unpacker.exe --assume-yes-for-downloads cli.py
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
@@ -38,7 +40,7 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           files: rpa-unpacker.exe
-          tag_name: ${{ github.ref_name }} 
-          generate_release_notes: true   
+          tag_name: ${{ github.ref_name }}
+          generate_release_notes: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
