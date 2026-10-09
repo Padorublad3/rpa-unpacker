@@ -1,5 +1,5 @@
 ## License
-This program contains free software licensed under a number of licenses, including the GNU Lesser General Public License. A complete list of software is available at [Ren'Py License Documentation](http://renpy.org)
+This program contains free software licensed under a number of licenses, including the GNU Lesser General Public License. A complete list of software is available at [Ren'Py License Documentation](https://www.renpy.org/doc/html/license.html)
 
 ## Description 
 
