@@ -28,18 +28,18 @@ jobs:
 
       - name: Build with Nuitka
         run: |
-          python -m nuitka --onefile --output-filename=unpacker.exe --assume-yes-for-downloads cli.py
+          python -m nuitka --onefile --output-filename=unrpa-cli.exe --assume-yes-for-downloads cli.py
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: unpacker-windows
-          path: unpacker.exe
+          name: unrpa-cli-windows
+          path: unrpa-cli.exe
 
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
-          files: unpacker.exe
+          files: unrpa-cli.exe
           tag_name: ${{ github.ref_name }}
           generate_release_notes: true
         env:
