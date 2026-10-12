@@ -26,20 +26,25 @@ jobs:
           python -m pip install --upgrade pip
           pip install "Nuitka[app]"
 
-      - name: Build with Nuitka
+      - name: Build with Nuitka (standalone)
         run: |
-          python -m nuitka --onefile --output-filename=unrpa-cli.exe --msvc=latest --assume-yes-for-downloads cli.py
+          python -m nuitka --standalone --output-filename=unrpa-cli.exe --msvc=latest --assume-yes-for-downloads cli.py
+
+      - name: Package into ZIP
+        shell: pwsh
+        run: |
+          Compress-Archive -Path cli.dist\* -DestinationPath unrpa-cli-windows.zip
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
           name: unrpa-cli-windows
-          path: unrpa-cli.exe
+          path: unrpa-cli-windows.zip
 
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
-          files: unrpa-cli.exe
+          files: unrpa-cli-windows.zip
           tag_name: ${{ github.ref_name }}
           generate_release_notes: true
         env:
