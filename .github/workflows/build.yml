@@ -28,7 +28,7 @@ jobs:
 
       - name: Build with Nuitka
         run: |
-          python -m nuitka --onefile --output-filename=unrpa-cli.exe --assume-yes-for-downloads cli.py
+          python -m nuitka --onefile --output-filename=unrpa-cli.exe --msvc=latest --assume-yes-for-downloads cli.py
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
